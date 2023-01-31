@@ -15,7 +15,6 @@ export const App = () => {
   const [ images, setImages ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(false);
   const [ showModal, setShowModal ] = useState(false);
-  const [ error, setError ] = useState(null);
   const [ inputValue, setInputValue ] = useState('');
   const [ largeImageURL, setLargeImageURL ] = useState('')
   const [ showButton, setShowButton ] = useState(false)
@@ -47,7 +46,6 @@ export const App = () => {
 
     const fetchQuery = async (value) => {
       setIsLoading(true);
-      setError(null);
 
       try {
         const response = await fetchImages(value, page);
@@ -62,7 +60,7 @@ export const App = () => {
          setShowButton(false);
         }
       } catch(error) {
-        setError(error);
+        console.log("error");
       } finally {
         setIsLoading(false);
       }
