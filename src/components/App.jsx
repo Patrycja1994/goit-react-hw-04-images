@@ -18,7 +18,6 @@ export const App = () => {
     largeImageURL: '',
   });
   const [inputValue, setInputValue] = useState('');
-  const [largeImageURL, setLargeImageURL] = useState('');
 
   const onSubmit = event => {
     event.preventDefault();
@@ -64,15 +63,15 @@ export const App = () => {
   const onOpen = largeImageURL => {
     setShowModal({
       show: true,
+      largeImageURL: largeImageURL,
     });
-    setLargeImageURL(largeImageURL);
   };
 
-  const onClose = () => {
+  const onClose = largeImageURL => {
     setShowModal({
       show: false,
+      largeImageURL: largeImageURL,
     });
-    setLargeImageURL('');
   };
 
   return (
@@ -89,7 +88,9 @@ export const App = () => {
       ) : (
         ''
       )}
-      {showModal.show && <Modal largeImage={largeImageURL} onClose={onClose} />}
+      {showModal.show && (
+        <Modal largeImage={showModal.largeImageURL} onClose={onClose} />
+      )}
     </div>
   );
 };
