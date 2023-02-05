@@ -62,12 +62,16 @@ export const App = () => {
   };
 
   const onOpen = largeImageURL => {
-    setShowModal(true);
+    setShowModal({
+      show: true,
+    });
     setLargeImageURL(largeImageURL);
   };
 
   const onClose = () => {
-    setShowModal(false);
+    setShowModal({
+      show: false,
+    });
     setLargeImageURL('');
   };
 
